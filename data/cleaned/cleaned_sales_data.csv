@@ -1,0 +1,30 @@
+Order_ID,Customer_ID,Customer_Name,Product,Category,Quantity,Price,Order_Date,City,Payment_Method,Inventory_Status
+ORD1001,CUST201,Anjali Gurav,Laptop,Electronics,2.0,55000.0,2025-01-15 10:30:00,Pune,Credit Card,In Stock
+ORD1002,CUST202,Rahul Sharma,Mobile Phone,Electronics,1.0,25000.0,2025-02-15 00:00:00,Mumbai,UPI,Low Stock
+ORD1003,CUST203,Priya Patil,Headphones,Electronics,3.0,2500.0,2025-03-12 00:00:00,Bangalore,Cash,Out of Stock
+ORD1007,CUST207,Vikas Mehta,Laptop,Electronics,1.0,55000.0,2025-07-21 00:00:00,Pune,Cash,Low Stock
+ORD1009,CUST209,Rohan Verma,Camera,Electronics,1.0,42000.0,2025-08-12 00:00:00,Kolkata,Credit Card,Out of Stock
+ORD1010,CUST210,Asha Nair,Sofa,Furniture,1.0,30000.0,2025-01-09 00:00:00,Bangalore,UPI,In Stock
+ORD1011,CUST211,Manish Gupta,Chair,Furniture,4.0,2500.0,2025-01-10 00:00:00,Delhi,Cash,Low Stock
+ORD1012,CUST212,Kiran Rao,Microwave,Home Appliances,1.0,12000.0,2025-11-11 08:20:00,Hyderabad,Credit Card,In Stock
+ORD1014,CUST214,Arjun Kapoor,Air Conditioner,Home Appliances,2.0,38000.0,2025-12-25 00:00:00,Pune,Cash,Out of Stock
+ORD1015,CUST215,Simran Kaur,Book,Stationery,10.0,350.0,2025-12-25 00:00:00,Mumbai,UPI,In Stock
+ORD1016,CUST216,Ravi Deshmukh,Pen,Stationery,50.0,20.0,2025-05-01 00:00:00,Delhi,Credit Card,Low Stock
+ORD1018,CUST218,Pooja Naik,Printer,Electronics,1.0,15000.0,2025-03-15 00:00:00,Hyderabad,UPI,Out of Stock
+ORD1019,CUST219,Akash Jain,Monitor,Electronics,2.0,12000.0,2025-04-15 00:00:00,Chennai,Debit Card,In Stock
+ORD1020,CUST220,Meera Shah,Keyboard,Electronics,5.0,1500.0,2025-05-30 17:45:00,Pune,Credit Card,Low Stock
+ORD1021,CUST221,Rahul Sharma,Mobile Phone,Electronics,1.0,25000.0,2025-02-15 00:00:00,Mumbai,UPI,Low Stock
+ORD1022,CUST222,Priya Patil,Headphones,Electronics,3.0,2500.0,2025-03-12 00:00:00,Bangalore,Cash,Out of Stock
+ORD1025,CUST225,Vikas Mehta,Laptop,Electronics,1.0,55000.0,2025-07-21 00:00:00,Pune,Cash,Low Stock
+ORD1027,CUST227,Rohan Verma,Camera,Electronics,1.0,42000.0,2025-08-12 00:00:00,Kolkata,Credit Card,Out of Stock
+ORD1028,CUST228,Asha Nair,Sofa,Furniture,1.0,30000.0,2025-01-09 00:00:00,Bangalore,UPI,In Stock
+ORD1029,CUST229,Manish Gupta,Chair,Furniture,4.0,2500.0,2025-01-10 00:00:00,Delhi,Cash,Low Stock
+ORD1030,CUST230,Kiran Rao,Microwave,Home Appliances,1.0,12000.0,2025-11-11 08:20:00,Hyderabad,Credit Card,In Stock
+ORD1032,CUST232,Arjun Kapoor,Air Conditioner,Home Appliances,2.0,38000.0,2025-12-25 00:00:00,Pune,Cash,Out of Stock
+ORD1033,CUST233,Simran Kaur,Book,Stationery,10.0,350.0,2025-12-25 00:00:00,Mumbai,UPI,In Stock
+ORD1034,CUST234,Ravi Deshmukh,Pen,Stationery,50.0,20.0,2025-05-01 00:00:00,Delhi,Credit Card,Low Stock
+ORD1036,CUST236,Pooja Naik,Printer,Electronics,1.0,15000.0,2025-03-15 00:00:00,Hyderabad,UPI,Out of Stock
+ORD1037,CUST237,Akash Jain,Monitor,Electronics,2.0,12000.0,2025-04-15 00:00:00,Chennai,Debit Card,In Stock
+ORD1038,CUST238,Meera Shah,Keyboard,Electronics,5.0,1500.0,2025-05-30 17:45:00,Pune,Credit Card,Low Stock
+ORD1039,CUST239,Anjali Gurav,Laptop,Electronics,2.0,55000.0,2025-01-15 10:30:00,Pune,Credit Card,In Stock
+ORD1040,CUST240,Rahul Sharma,Mobile Phone,Electronics,1.0,25000.0,2025-02-15 00:00:00,Mumbai,UPI,Low Stock

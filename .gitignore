@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# SQLite temporary files
+*.db-journal
+
+# Raw data (optional)
+data/raw/
+
+# OS files
+.DS_Store
+Thumbs.db
