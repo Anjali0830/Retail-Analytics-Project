@@ -1,3 +1,5 @@
+USE retail_analytics;
+
 -- Total Revenue
 SELECT SUM(quantity * price) AS total_revenue
 FROM sales;
@@ -20,7 +22,7 @@ ORDER BY revenue DESC;
 
 
 -- Monthly Sales
-SELECT strftime('%m', order_date) AS month,
+SELECT DATE_FORMAT(order_date, '%m') AS month,
        SUM(quantity * price) AS total_sales
 FROM sales
 GROUP BY month
