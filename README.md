@@ -1,81 +1,94 @@
-# Omnichannel Retail Sales and Inventory Analytics Dashboard
+# Omnichannel Retail Sales & Inventory Analytics Dashboard
 
 ## Project Overview
 
-This project analyzes retail sales and inventory data to generate business insights using Python, SQLite, SQL, and Power BI.
+This project focuses on analyzing retail sales and inventory data using Python, MySQL, SQL, and Power BI to generate actionable business insights.
 
-The objective is to clean raw retail data, perform SQL-based analysis, and build an interactive dashboard that helps stakeholders monitor sales performance, customer behavior, inventory status, and payment trends.
+The solution follows a complete data analytics workflow:
 
----
+- Data Cleaning using Python (Pandas)
+- Data Storage using MySQL
+- Data Analysis using SQL
+- Interactive Dashboard Development using Power BI
+- Version Control using Git & GitHub
 
-## Business Problem
-
-Retail businesses generate large amounts of transactional data from multiple channels. Without proper analysis, it becomes difficult to:
-
-- Track revenue performance
-- Identify top-selling products
-- Monitor inventory status
-- Understand customer purchasing behavior
-- Analyze payment method trends
-- Compare sales across cities
-
-This project addresses these challenges through data analytics and visualization.
+The goal is to help businesses understand sales performance, customer behavior, inventory status, and payment trends through data-driven decision making.
 
 ---
 
-## Technologies Used
+# Business Problem
 
-- Python
-- Pandas
-- SQLite
-- SQL
-- Power BI
-- Git & GitHub
-- VS Code
+Retail organizations generate large amounts of transactional data every day. However, extracting meaningful insights from raw data can be challenging.
+
+Key business questions addressed:
+
+- What is the total revenue generated?
+- Which products are top-selling?
+- Which cities contribute the highest revenue?
+- What are the monthly sales trends?
+- Which payment methods are preferred by customers?
+- What is the current inventory distribution?
+- Who are the top customers based on spending?
 
 ---
 
-## Project Architecture
+# Tech Stack
+
+| Technology | Purpose |
+|------------|----------|
+| Python | Data Cleaning & Preprocessing |
+| Pandas | Data Manipulation |
+| MySQL | Database Storage |
+| MySQL Workbench | Database Management |
+| SQL | Data Analysis |
+| Power BI | Dashboard & Visualization |
+| Git | Version Control |
+| GitHub | Project Repository |
+| VS Code | Development Environment |
+
+---
+
+# Project Architecture
 
 ```text
-Raw CSV Data
-      ↓
-Data Cleaning (Python)
-      ↓
+Raw CSV Dataset
+        ↓
+Python Data Cleaning
+        ↓
 Cleaned Dataset
-      ↓
-SQLite Database
-      ↓
+        ↓
+MySQL Database
+        ↓
 SQL Analysis
-      ↓
+        ↓
 Power BI Dashboard
-      ↓
+        ↓
 Business Insights
 ```
 
 ---
 
-## Dataset Information
+# Dataset Description
 
-The dataset contains retail transaction records with the following fields:
+The dataset contains retail transaction records with the following columns:
 
 | Column Name | Description |
 |------------|-------------|
-| order_id | Unique order identifier |
-| customer_id | Unique customer identifier |
-| customer_name | Customer name |
-| product | Product purchased |
-| category | Product category |
-| quantity | Quantity sold |
-| price | Unit price |
-| order_date | Date of order |
-| city | Customer city |
-| payment_method | Payment method used |
-| inventory_status | Inventory availability status |
+| order_id | Unique Order Identifier |
+| customer_id | Unique Customer Identifier |
+| customer_name | Customer Name |
+| product | Product Purchased |
+| category | Product Category |
+| quantity | Quantity Sold |
+| price | Unit Price |
+| order_date | Date of Order |
+| city | Customer City |
+| payment_method | Payment Method Used |
+| inventory_status | Product Availability Status |
 
 ---
 
-## Project Structure
+# Project Folder Structure
 
 ```text
 Retail-Analytics-Project/
@@ -84,9 +97,6 @@ Retail-Analytics-Project/
 │   ├── raw/
 │   └── cleaned/
 │       └── cleaned_sales.csv
-│
-├── database/
-│   └── retail.db
 │
 ├── notebooks/
 │   ├── data_cleaning.py
@@ -105,46 +115,85 @@ Retail-Analytics-Project/
 │
 ├── README.md
 │
-└── requirements.txt
+├── requirements.txt
+│
+└── .gitignore
 ```
 
 ---
 
-## Data Cleaning Tasks
+# Data Cleaning Process
 
-The following preprocessing steps were performed using Python:
+Data cleaning was performed using Python and Pandas.
+
+## Tasks Performed
 
 - Removed duplicate records
 - Handled missing values
 - Standardized date formats
 - Validated data types
-- Created calculated sales metrics
-- Prepared data for SQL and Power BI analysis
+- Prepared data for SQL analysis
+- Exported cleaned dataset
+
+## Sample Code
+
+```python
+import pandas as pd
+
+df = pd.read_csv("sales.csv")
+
+df.drop_duplicates(inplace=True)
+df.dropna(inplace=True)
+
+df.to_csv("cleaned_sales.csv", index=False)
+```
 
 ---
 
-## SQL Analysis
+# MySQL Database Setup
 
-The following business questions were answered using SQL:
+## Create Database
 
-### Total Revenue
+```sql
+CREATE DATABASE retail_analytics;
+```
+
+## Use Database
+
+```sql
+USE retail_analytics;
+```
+
+## Create Table
+
+```sql
+CREATE TABLE sales (
+    order_id VARCHAR(20),
+    customer_id VARCHAR(20),
+    customer_name VARCHAR(100),
+    product VARCHAR(100),
+    category VARCHAR(100),
+    quantity INT,
+    price DECIMAL(10,2),
+    order_date DATE,
+    city VARCHAR(100),
+    payment_method VARCHAR(50),
+    inventory_status VARCHAR(50)
+);
+```
+
+---
+
+# SQL Analysis
+
+## Total Revenue
 
 ```sql
 SELECT SUM(quantity * price) AS total_revenue
 FROM sales;
 ```
 
-### Top Selling Products
-
-```sql
-SELECT product,
-       SUM(quantity) AS total_quantity
-FROM sales
-GROUP BY product
-ORDER BY total_quantity DESC;
-```
-
-### Revenue by City
+## Revenue by City
 
 ```sql
 SELECT city,
@@ -154,64 +203,106 @@ GROUP BY city
 ORDER BY revenue DESC;
 ```
 
-### Monthly Sales Trend
+## Top Selling Products
 
 ```sql
-SELECT strftime('%m', order_date) AS month,
-       SUM(quantity * price) AS total_sales
+SELECT product,
+       SUM(quantity) AS total_quantity
 FROM sales
-GROUP BY month
-ORDER BY month;
+GROUP BY product
+ORDER BY total_quantity DESC;
+```
+
+## Sales by Category
+
+```sql
+SELECT category,
+       SUM(quantity * price) AS revenue
+FROM sales
+GROUP BY category
+ORDER BY revenue DESC;
+```
+
+## Payment Method Analysis
+
+```sql
+SELECT payment_method,
+       COUNT(*) AS total_orders
+FROM sales
+GROUP BY payment_method
+ORDER BY total_orders DESC;
+```
+
+## Inventory Status Analysis
+
+```sql
+SELECT inventory_status,
+       COUNT(*) AS total_products
+FROM sales
+GROUP BY inventory_status;
 ```
 
 ---
 
-## Power BI Dashboard
+# Power BI Dashboard
 
-The dashboard includes the following visualizations:
+The dashboard provides an interactive view of business performance.
 
-### KPI Cards
+## KPI Cards
 
 - Total Revenue
 - Total Orders
 
-### Charts
+## Visualizations
 
-- Revenue by City (Bar Chart)
-- Sales by Category (Pie Chart)
-- Monthly Sales Trend (Line Chart)
-- Payment Method Analysis (Donut Chart)
-- Inventory Status Analysis (Column Chart)
+### Revenue by City
+- Clustered Bar Chart
 
-### Tables
+### Sales by Category
+- Pie Chart
 
-- Top Products
-- Customer Sales Summary
+### Monthly Sales Trend
+- Line Chart
 
-### Filters
+### Payment Method Analysis
+- Donut Chart
 
-- City
-- Category
-- Payment Method
-- Inventory Status
-- Month
+### Inventory Status Analysis
+- Column Chart
+
+### Top Products
+- Table Visual
 
 ---
 
-## Key Insights
+# Dashboard Features
 
-Some of the insights generated from the analysis include:
+- Interactive Filters (Slicers)
+- Dynamic Revenue Tracking
+- Category Performance Analysis
+- Customer Insights
+- Inventory Monitoring
+- Payment Method Distribution
 
-- Identification of top-performing cities
-- Best-selling products and categories
-- Monthly sales trends
-- Customer purchasing patterns
+---
+
+# Key Insights
+
+The dashboard helps identify:
+
+- Highest revenue-generating cities
+- Best-selling products
+- Most profitable categories
+- Monthly sales performance
+- Customer purchasing trends
 - Preferred payment methods
-- Inventory stock distribution
+- Inventory availability status
 
 ---
 
-## Dashboard Preview
+# Screenshots
+
+## Final Dashboard
 
 Add your dashboard screenshot here:
 
@@ -221,70 +312,124 @@ screenshots/17_final_dashboard.png
 
 ---
 
-## How to Run the Project
+# How to Run This Project
 
-### Clone Repository
+## Clone Repository
 
 ```bash
 git clone https://github.com/your-username/Retail-Analytics-Project.git
 ```
 
-### Navigate to Project Folder
+## Open Project
 
 ```bash
 cd Retail-Analytics-Project
 ```
 
-### Install Dependencies
+## Install Dependencies
 
 ```bash
 pip install pandas matplotlib
 ```
 
-### Run Data Cleaning
+## Run Data Cleaning
 
 ```bash
 python notebooks/data_cleaning.py
 ```
 
-### Create SQLite Database
+## Import Data into MySQL
 
-```bash
-python database/create_database.py
+Use MySQL Workbench:
+
+Server → Table Data Import Wizard
+
+Import:
+
+```text
+cleaned_sales.csv
 ```
 
-### Execute SQL Queries
+into:
 
-Open:
+```text
+sales
+```
+
+table.
+
+## Execute SQL Queries
+
+Run:
 
 ```text
 sql/analysis_queries.sql
 ```
 
-and run queries using SQLite extension in VS Code.
+using MySQL Workbench.
+
+## Open Dashboard
+
+Open:
+
+```text
+dashboard/retail_dashboard.pbix
+```
+
+using Power BI Desktop.
 
 ---
 
-## Future Enhancements
+# Skills Demonstrated
 
-- Forecast future sales trends
-- Customer segmentation analysis
-- Product recommendation system
-- Automated reporting
-- Real-time dashboard integration
+### Data Analytics
+
+- Data Cleaning
+- Data Transformation
+- Exploratory Data Analysis
+
+### Database Management
+
+- MySQL
+- SQL Query Writing
+- Data Import & Validation
+
+### Business Intelligence
+
+- Power BI Dashboard Development
+- KPI Tracking
+- Interactive Reporting
+
+### Software Development
+
+- Python
+- Git
+- GitHub
+- VS Code
 
 ---
 
-## Author
+# Future Enhancements
+
+- Sales Forecasting using Machine Learning
+- Customer Segmentation Analysis
+- Automated ETL Pipeline
+- Real-Time Dashboard Integration
+- Inventory Demand Prediction
+
+---
+
+# Author
 
 **Anjali Gurav**
 
 Software Engineer | Data Analytics Enthusiast
 
-GitHub: https://github.com/your-github-username
+GitHub: https://github.com/Anjali0830
+
 
 ---
 
-## License
+# License
 
-This project is created for learning and portfolio purposes.
+This project is intended for educational, portfolio, and learning purposes.
