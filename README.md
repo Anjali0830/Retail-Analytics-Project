@@ -111,8 +111,6 @@ Retail-Analytics-Project/
 ├── reports/
 │   └── final_report.docx
 │
-├── screenshots/
-│
 ├── README.md
 │
 ├── requirements.txt
@@ -134,19 +132,6 @@ Data cleaning was performed using Python and Pandas.
 - Validated data types
 - Prepared data for SQL analysis
 - Exported cleaned dataset
-
-## Sample Code
-
-```python
-import pandas as pd
-
-df = pd.read_csv("sales.csv")
-
-df.drop_duplicates(inplace=True)
-df.dropna(inplace=True)
-
-df.to_csv("cleaned_sales.csv", index=False)
-```
 
 ---
 
@@ -300,18 +285,6 @@ The dashboard helps identify:
 
 ---
 
-# Screenshots
-
-## Final Dashboard
-
-Add your dashboard screenshot here:
-
-```text
-screenshots/17_final_dashboard.png
-```
-
----
-
 # How to Run This Project
 
 ## Clone Repository
@@ -413,8 +386,6 @@ using Power BI Desktop.
 
 - Sales Forecasting using Machine Learning
 - Customer Segmentation Analysis
-- Automated ETL Pipeline
-- Real-Time Dashboard Integration
 - Inventory Demand Prediction
 
 ---
