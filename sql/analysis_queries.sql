@@ -29,7 +29,7 @@ SELECT
 FROM sales;
 
 
--- Top Products
+-- Top Selling Products
 SELECT Product,
        SUM(Quantity) AS total_quantity
 FROM sales
